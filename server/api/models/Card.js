@@ -12,6 +12,7 @@
 
 const Types = {
   PROJECT: 'project',
+  EPIC: 'epic',
   STORY: 'story',
 };
 
@@ -99,6 +100,10 @@ module.exports = {
       model: 'Attachment',
       columnName: 'cover_attachment_id',
     },
+    parentCardId: {
+      model: 'Card',
+      columnName: 'parent_card_id',
+    },
     subscriptionUsers: {
       collection: 'User',
       via: 'cardId',
@@ -129,6 +134,10 @@ module.exports = {
     actions: {
       collection: 'Action',
       via: 'cardId',
+    },
+    childCards: {
+      collection: 'Card',
+      via: 'parentCardId',
     },
   },
 };
